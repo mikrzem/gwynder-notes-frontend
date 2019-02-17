@@ -1,0 +1,35 @@
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">All notes</h4>
+    </div>
+    <div class="card-body"
+         *ngIf="(request | async) as notes; else loading">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let note of notes">
+                    <td>{{note.title}}</td>
+                    <td>
+                        <a class="btn btn-block btn-primary">
+                            <span class="fa fa-edit"></span>
+                            Edit
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <ng-template #loading>
+        <div class="card-body">
+            <div class="alert alert-info">
+                <span class="fa fa-spin fa-spinner"></span>
+                Loading...
+            </div>
+        </div>
+    </ng-template>
+</div>

@@ -8,6 +8,7 @@ import {UrlService} from './common/url';
 import {Error404Page} from './main/error.404';
 import {StartPage} from './main/start.page';
 import {NotesCreate} from './notes/components/notes.create';
+import {NotesList} from './notes/components/notes.list';
 import {NoteService} from './notes/services/service';
 
 @NgModule({
@@ -16,6 +17,7 @@ import {NoteService} from './notes/services/service';
         Error404Page,
         StartPage,
         NotesCreate,
+        NotesList,
     ],
     imports: [
         BrowserModule,

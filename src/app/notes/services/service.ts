@@ -1,5 +1,5 @@
 import {HttpClient} from '@angular/common/http';
-import {Injectable} from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {CreateResult} from '../../common/data';
 import {UrlService} from '../../common/url';
 import {Note} from './data';
@@ -8,6 +8,8 @@ const NOTES = 'notes';
 
 @Injectable()
 export class NoteService {
+
+    public readonly changes = new EventEmitter<any>();
 
     constructor(
         private readonly client: HttpClient,
@@ -26,24 +28,28 @@ export class NoteService {
         ).toPromise();
     }
 
-    public create(note: Note): Promise<CreateResult> {
-        return this.client.post<CreateResult>(
+    public async create(note: Note): Promise<CreateResult> {
+        const result = await this.client.post<CreateResult>(
             this.url.buildUrl(NOTES),
             note
         ).toPromise();
+        this.changes.emit();
+        return result;
     }
 
-    public update(id: number, note: Note): Promise<any> {
-        return this.client.put(
+    public async update(id: number, note: Note): Promise<any> {
+        await this.client.put(
             this.url.buildUrl(NOTES, id),
             note
         ).toPromise();
+        this.changes.emit();
     }
 
-    public delete(id: number): Promise<any> {
-        return this.client.delete(
+    public async delete(id: number): Promise<any> {
+        await this.client.delete(
             this.url.buildUrl(NOTES, id)
         ).toPromise();
+        this.changes.emit();
     }
 
 }
