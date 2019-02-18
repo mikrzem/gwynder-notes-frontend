@@ -1,6 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {EventEmitter, Injectable} from '@angular/core';
 import {CreateResult} from '../../common/data';
+import {PageRequest, PageResponse} from '../../common/paging';
 import {UrlService} from '../../common/url';
 import {Note} from './data';
 
@@ -22,8 +23,8 @@ export class NoteService {
         ).toPromise();
     }
 
-    public select(): Promise<Note[]> {
-        return this.client.get<Note[]>(
+    public select(request: PageRequest): Promise<PageResponse<Note>> {
+        return this.client.get<PageResponse<Note>>(
             this.url.buildUrl(NOTES)
         ).toPromise();
     }

@@ -1,5 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
+import {PageRequest, PageResponse} from '../../common/paging';
 import {Note} from '../services/data';
 import {NoteService} from '../services/service';
 
@@ -9,7 +10,13 @@ import {NoteService} from '../services/service';
 })
 export class NotesList implements OnInit, OnDestroy {
 
-    public request: Promise<Note[]>;
+    public request: Promise<PageResponse<Note>>;
+
+    public page: PageRequest = {
+        page: 0,
+        pageSize: 10,
+        oldestFirst: false
+    };
 
     private subscription: Subscription;
 
@@ -32,7 +39,7 @@ export class NotesList implements OnInit, OnDestroy {
     }
 
     private loadList() {
-        this.request = this.service.select();
+        this.request = this.service.select(this.page);
     }
 
 }
