@@ -3,13 +3,14 @@
         <h4 class="card-title">Create new note</h4>
     </div>
     <div class="card-body">
-        <form>
+        <form (submit)="save()">
             <div class="row form-group">
                 <div class="col-md-9">
                     <input type="text"
                            class="form-control"
                            name="title"
-                           placeholder="Note title..."/>
+                           placeholder="Note title..."
+                           [(ngModel)]="note.title"/>
                 </div>
                 <div class="col-md-3">
                     <button type="submit"
