@@ -22,6 +22,15 @@
                     </td>
                 </tr>
             </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2">
+                        <paging-controls [(request)]="page"
+                                         [response]="notes">
+                        </paging-controls>
+                    </td>
+                </tr>
+            </tfoot>
         </table>
     </div>
     <ng-template #loading>

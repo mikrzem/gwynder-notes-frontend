@@ -1,8 +1,8 @@
 import {HttpClient} from '@angular/common/http';
 import {EventEmitter, Injectable} from '@angular/core';
-import {CreateResult} from '../../common/data';
-import {PageRequest, PageResponse} from '../../common/paging';
-import {UrlService} from '../../common/url';
+import {CreateResult} from '../../common/services/data';
+import {PageRequest, PageResponse} from '../../common/services/paging';
+import {UrlService} from '../../common/services/url';
 import {Note} from './data';
 
 const NOTES = 'notes';
@@ -25,7 +25,10 @@ export class NoteService {
 
     public select(request: PageRequest): Promise<PageResponse<Note>> {
         return this.client.get<PageResponse<Note>>(
-            this.url.buildUrl(NOTES)
+            this.url.buildUrl(NOTES),
+            {
+                params: this.url.pageParams(request)
+            }
         ).toPromise();
     }
 

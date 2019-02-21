@@ -1,4 +1,4 @@
-import {BaseData} from '../../common/data';
+import {BaseData} from '../../common/services/data';
 
 export interface Note extends BaseData {
 
