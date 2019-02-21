@@ -9,6 +9,8 @@ import {PagingControls} from './common/components/paging.controls';
 import {UrlService} from './common/services/url';
 import {Error404Page} from './main/error.404';
 import {StartPage} from './main/start.page';
+import {NotesEdit} from './notes/components/edit/notes.edit';
+import {NotesEditGeneral} from './notes/components/edit/notes.general';
 import {NotesCreate} from './notes/components/notes.create';
 import {NotesList} from './notes/components/notes.list';
 import {NoteService} from './notes/services/service';
@@ -21,6 +23,8 @@ import {NoteService} from './notes/services/service';
         NotesCreate,
         NotesList,
         PagingControls,
+        NotesEdit,
+        NotesEditGeneral,
     ],
     imports: [
         BrowserModule,

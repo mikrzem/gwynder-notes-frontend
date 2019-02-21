@@ -1,0 +1,8 @@
+<div *ngIf="(request | async) as note">
+    <div class="row form-group top-margin">
+        <div class="col-md-12">
+            <notes-general [note]="note">
+            </notes-general>
+        </div>
+    </div>
+</div>

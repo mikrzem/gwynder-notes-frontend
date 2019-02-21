@@ -1,20 +1,33 @@
-<div class="card">
+<div class="card"
+     *ngIf="note">
     <div class="card-header">
-        <h4 class="card-title">Create new note</h4>
+        <h4 class="card-title">
+            <a class="btn btn-info"
+               [routerLink]="['/main']">
+                <span class="fa fa-level-up"></span>
+                &nbsp; Return to list
+            </a>
+            Note
+        </h4>
     </div>
     <div class="card-body">
         <form (submit)="save()">
+            <div class="alert alert-success"
+                 *ngIf="saved">
+                Saved note
+            </div>
             <div class="row form-group">
-                <div class="col-md-9">
+                <div class="col-md-8">
                     <input type="text"
+                           required="required"
                            class="form-control"
                            name="title"
                            placeholder="Note..."
                            [(ngModel)]="note.title"/>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <button type="submit"
-                            class="btn btn-primary btn-block">
+                            class="btn btn-block btn-primary">
                         <span class="fa fa-save"></span>
                         Save
                     </button>

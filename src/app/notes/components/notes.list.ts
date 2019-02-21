@@ -12,6 +12,12 @@ export class NotesList implements OnInit, OnDestroy {
 
     public request: Promise<PageResponse<Note>>;
 
+    private subscription: Subscription;
+
+    constructor(
+        private service: NoteService
+    ) { }
+
     public _page: PageRequest = {
         page: 0,
         pageSize: 10,
@@ -27,12 +33,6 @@ export class NotesList implements OnInit, OnDestroy {
         this.loadList();
     }
 
-    private subscription: Subscription;
-
-    constructor(
-        private service: NoteService
-    ) { }
-
     public ngOnInit(): void {
         this.loadList();
         this.subscription = this.service.changes.subscribe(
@@ -47,8 +47,11 @@ export class NotesList implements OnInit, OnDestroy {
         }
     }
 
+    public async remove(note: Note) {
+        await this.service.delete(note.id);
+    }
+
     private loadList() {
         this.request = this.service.select(this.page);
     }
-
 }

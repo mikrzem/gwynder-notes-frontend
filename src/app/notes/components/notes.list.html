@@ -7,7 +7,8 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>Title</th>
+                    <th>Note</th>
+                    <th></th>
                     <th></th>
                 </tr>
             </thead>
@@ -15,16 +16,25 @@
                 <tr *ngFor="let note of notes.data">
                     <td>{{note.title}}</td>
                     <td>
-                        <a class="btn btn-block btn-primary">
+                        <a class="btn btn-block btn-primary"
+                           [routerLink]="['/note', note.id]">
                             <span class="fa fa-edit"></span>
                             Edit
                         </a>
+                    </td>
+                    <td>
+                        <button type="button"
+                                class="btn btn-block btn-warning"
+                                (click)="remove(note)">
+                            <span class="fa fa-trash"></span>
+                            Remove
+                        </button>
                     </td>
                 </tr>
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="2">
+                    <td colspan="3">
                         <paging-controls [(request)]="page"
                                          [response]="notes">
                         </paging-controls>
