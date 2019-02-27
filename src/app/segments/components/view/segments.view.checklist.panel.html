@@ -1,0 +1,7 @@
+<div *ngIf="checklist">
+    <div *ngFor="let entry of checklist.entries">
+        <segments-view-checklist-entry [entry]="entry"
+                                       [note]="note">
+        </segments-view-checklist-entry>
+    </div>
+</div>

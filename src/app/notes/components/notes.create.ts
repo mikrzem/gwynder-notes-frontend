@@ -19,9 +19,10 @@ export class NotesCreate {
         this.note = this.newNote();
     }
 
-    private newNote() {
+    private newNote(): Note {
         return {
-            title: null
+            title: null,
+            segments: []
         };
     }
 }

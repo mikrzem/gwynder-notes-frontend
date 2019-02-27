@@ -1,0 +1,23 @@
+<div class="card"
+     *ngIf="note">
+    <div class="card-header">
+        <h4 class="card-title">
+            Segments
+            <div class="float-right">
+                <segments-add [note]="note">
+                </segments-add>
+            </div>
+        </h4>
+    </div>
+    <div class="card-body">
+        <div class="row form-group"
+             *ngFor="let segment of note.segments; let segmentIndex = index">
+            <div class="col-md-12">
+                <segments-panel [note]="note"
+                                [segment]="segment"
+                                [index]="segmentIndex">
+                </segments-panel>
+            </div>
+        </div>
+    </div>
+</div>

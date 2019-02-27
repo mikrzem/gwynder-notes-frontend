@@ -1,0 +1,11 @@
+<div *ngIf="segment">
+    <div *ngIf="segment.text">
+        <segments-view-text [text]="segment.text">
+        </segments-view-text>
+    </div>
+    <div *ngIf="segment.checklist">
+        <segments-view-checklist [checklist]="segment.checklist"
+                                 [note]="note">
+        </segments-view-checklist>
+    </div>
+</div>

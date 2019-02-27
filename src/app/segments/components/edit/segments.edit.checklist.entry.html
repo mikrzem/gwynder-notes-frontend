@@ -1,0 +1,48 @@
+<div *ngIf="entry">
+    <div class="row form-group">
+        <div class="col-md-9">
+            <div class="input-group">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <input type="checkbox"
+                               name="checked"
+                               [(ngModel)]="entry.checked"/>
+                    </div>
+                </div>
+                <input type="text"
+                       class="form-control"
+                       name="text"
+                       [(ngModel)]="entry.text"/>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <button type="button"
+                    class="btn btn-block btn-warning"
+                    (click)="remove()">
+                <span class="fa fa-trash"></span>
+                Remove entry
+            </button>
+        </div>
+    </div>
+    <div class="row form-group"
+         *ngFor="let child of entry.entries; let entryIndex = index">
+        <div class="col-md-1"></div>
+        <div class="col-md-11">
+            <segments-edit-checklist-entry [entry]="child"
+                                           [entryList]="entry.entries"
+                                           [index]="entryIndex">
+            </segments-edit-checklist-entry>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-11">
+            <button type="button"
+                    class="btn btn-block btn-success"
+                    (click)="addChild()">
+                <span class="fa fa-plus-square-o"></span>
+                Add child entry
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<div *ngIf="entry">
+    <div class="row">
+        <div class="col-md-12">
+            <label>
+                <input type="checkbox"
+                       name="checked"
+                       [(ngModel)]="checked"/>
+                {{entry.text}}
+            </label>
+        </div>
+    </div>
+    <div class="row"
+         *ngFor="let child of entry.entries">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-11">
+            <segments-view-checklist-entry [entry]="child"
+                                           [note]="note">
+            </segments-view-checklist-entry>
+        </div>
+    </div>
+</div>
